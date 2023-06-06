@@ -36,6 +36,37 @@ ls /mnt/raid
 sudo umount /mnt/raid
 ```
 
-
-
 ### Strategy 2:  Access array with mdadm
+1.  Check if mdadm is installed on your system - install if it is not
+```
+sudo apt-install -y mdadm
+```
+2.  If you haven't created a mount point for the drive, do it now
+ ```
+ sudo mkdir /mnt/raid
+ ```
+3. See if mdadm will mount the drive
+```
+sudo mdadm --assemble --scan
+```
+4.  If you see something like below, you are in luck!  Pay attention to the md number displayed
+```
+mdadm: /dev/md/1 has been started with 1 drive (out of 2)
+```
+5. Assuming that md1 was displayed, enter the following.  If 1 is not the right number, change it as you type it into terminal
+```
+sudo mount /dev/md1 /mnt/raid
+```
+6. Check if the mount was successful
+```
+ls -la /mnt/raid
+```
+7.  If the mount was successful, you should be able to copy the files to the replacement drive via the GUI.
+8. If the drive mounted properly, ensure you unmount the drive before you disconnect.  If a button isn't provided in Nautilus, in terminal, type
+```
+sudo umount /mnt/raid
+```
+9. If the drive mounted properly, ensure you unmount the drive before you disconnect.  If a button isn't provided in Nautilus, in terminal, type
+```
+sudo umount /mnt/raid
+```
