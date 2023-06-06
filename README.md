@@ -25,6 +25,8 @@ sudo mkdir /mnt/raid
 4. Try to force-mount the drive (change /dev/sdb2 to the right partition label, and /mnt/raid to the directory path you created
 ```
 sudo mount -f ext4 /dev/sdb2 /mnt/raid
+-or-
+sudo mount ext4 /dev/sdb2 /mnt/raid -o force
 ```
 5. If there is an error, write it down.  If not, see if the mount was successful and the data can be read
 ```
